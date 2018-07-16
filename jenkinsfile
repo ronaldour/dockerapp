@@ -6,9 +6,9 @@ pipeline {
       steps{
         echo "Deploying"
         sh '$(aws ecr get-login --no-include-email --region us-east-1)'
-        sh "docker build -t dockerapp ."
-        sh "docker tag docker-app 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
-        sh "docker push 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
+        sh "sudo docker build -t dockerapp ."
+        sh "sudo docker tag docker-app 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
+        sh "sudo docker push 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
       }
     }
 
