@@ -5,11 +5,8 @@ pipeline {
     stage('Deploy'){
       steps{
         echo "Deploying"
-        sh "whoami"
-        sh "docker ps"
         sh "eval \$(aws ecr get-login --no-include-email --region us-east-1)"
-        sh "whoami"
-        sh "docker build -t dockerapp ."
+        sh "docker build -t docker-app:latest ."
         sh "docker tag docker-app 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
         sh "docker push 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
       }
