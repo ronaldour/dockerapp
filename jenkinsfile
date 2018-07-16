@@ -3,6 +3,9 @@ pipeline {
 
   stages{
     stage('Deploy'){
+        sh "echo testing"
+    }
+    stage('Deploy'){
       steps{
         echo "Deploying"
         sh "eval \$(aws ecr get-login --no-include-email --region us-east-1)"
@@ -11,7 +14,6 @@ pipeline {
         sh "docker push 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
       }
     }
-
   }
   post {
     failure{
