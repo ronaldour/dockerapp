@@ -8,7 +8,7 @@ $(function() {
 			data: form.serialize(),
 			success: function(data) {
                 $("#modal").modal("hide");
-                $("#list").append("<li>" + data + "</li>");
+                $("#list").append('<li class="col-3 list-group-item"> &#8226; ' + data + '</li>');
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
                  console.log("error on create");

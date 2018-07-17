@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web1:
+    build: ../
+    volumes:
+      - ../code:/code
+    environment:
+      - ENDPOINT=redis
+      - PORT=6379
+    links:
+      - redis
+    ports:
+      - 5000:5000
+  redis:
+    image: "redis:alpine"

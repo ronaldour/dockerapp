@@ -5,6 +5,14 @@ pipeline {
     stage('Test'){
       steps {
         sh "echo Testing..."
+        sh '''
+          if curl --fail -X GET http://localhost:5000; then
+            exit 0
+          else
+            echo "failed"
+            exit 1
+          fi;
+        '''
       }
     }
     stage('Deploy'){
