@@ -6,6 +6,8 @@ pipeline {
       steps {
         sh "echo Testing..."
         sh '''
+          docker-compose -f ./test/docker-compose.yml
+          sleep 5
           if curl --fail -X GET http://localhost:5000; then
             exit 0
           else
