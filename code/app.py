@@ -55,7 +55,7 @@ def delete_names():
 def hello():
     count = get_hit_count()
     names_list = get_names()
-    return render_template('index.html', times = count, server = "Server", names= names_list)
+    return render_template('index.html', times = count, server = "S", names= names_list)
 
 @app.route('/newname')
 def newname():

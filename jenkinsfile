@@ -25,6 +25,7 @@ pipeline {
         sh "docker build -t docker-app:latest ."
         sh "docker tag docker-app 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
         sh "docker push 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
+        sh "aws ecs update-service --cluster ECS-Lab --service DockerAppService --force-new-deployment"
       }
     }
   }
