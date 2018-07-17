@@ -8,7 +8,7 @@ pipeline {
         sh '''
           docker-compose -f ./test/docker-compose.yml up -d
           sleep 5
-          if curl --fail -X GET http://localhost:5000; then
+          if curl -s --fail -X GET http://localhost:5000; then
             exit 0
           else
             echo "failed"
@@ -25,7 +25,7 @@ pipeline {
         sh "docker build -t docker-app:latest ."
         sh "docker tag docker-app 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
         sh "docker push 492864460344.dkr.ecr.us-east-1.amazonaws.com/docker-app:latest"
-        sh "aws ecs update-service --cluster ECS-Lab --service DockerAppService --force-new-deployment"
+        sh "aws --region us-east-1 ecs update-service --cluster ECS-Lab --service DockerAppService --force-new-deployment"
       }
     }
   }
